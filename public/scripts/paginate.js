@@ -20,11 +20,13 @@ function appendItem(items, data){
                 html += `<div class="post paginate large-thumb">`
             }else if(v <= 2){
                 html += `<div class="post paginate">`
+            }else if(v === 4){
+                html += `<div class="post large-thumb">`
             }else{
                 html += `<div class="post">`
             }
 
-            if(v === 1){
+            if((v === 1)||(v === 4)){
                 html += `<a class="thumb" href="/post/${items[v].key}">`
                 html += `<img src="${items[v].thumb}" />`
                 if(items[v].videos){ 
@@ -49,12 +51,12 @@ function appendItem(items, data){
     }
     
     let message = ''
-    if(data.count - (data.page*data.homePaginate + parseInt(data.fpostLimit)) == 1){
-        message = `last page`
-    }else if(data.count - (data.page*data.homePaginate + parseInt(data.fpostLimit)) <= 0){
+    if(data.count - data.page*data.fpostLimit  == 1){
+        message = `1 more post`
+    }else if(data.count - data.page*data.fpostLimit <= 0){
         message = `no more post`
     }else{
-        message = `${data.count - (data.page*data.homePaginate + parseInt(data.fpostLimit))} more posts`
+        message = `${data.count - data.page*data.fpostLimit} more posts`
     }
 
     $('.articles').append(html)

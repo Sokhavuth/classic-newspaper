@@ -15,7 +15,7 @@
 
 .feature-post .post:nth-child(2) .thumb .play-icon,
 .feature-post .large-thumb .thumb .play-icon{
-    width: 15%;
+    width: 15% !important;
 }
 
 .feature-post .paginate{
@@ -114,7 +114,8 @@
         padding-bottom: 30px;
     }
 
-    .feature-post .post:nth-child(2){
+    .feature-post .post:nth-child(2),
+    .feature-post .large-thumb{
         grid-column: 1 / span 1;
     }
 
