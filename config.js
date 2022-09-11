@@ -14,6 +14,7 @@ async function setup(){
         username: "",
         message: "",
         count: 0,
+        homePaginate: 7,
     }
 
     return settings

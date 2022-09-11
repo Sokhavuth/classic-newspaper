@@ -61,14 +61,14 @@
 </div>
 
 <% if(data.items){ %>
-<div class="feature-post">
+<div class="feature-post articles">
 <% for(let v=3; v<data.fpostLimit; v++){ %>
     <div class="post">
         <% if(v === 4){ %>
-            <a class="thumb" href="/post/<%= data.items[2].key %>">
-                <img src="<%= data.items[2].thumb %>" />
-                <% if(data.items[2].videos){ %>
-                <% if((data.items[2].videos !== "")&&(data.items[2].videos !== "[]")){ %>
+            <a class="thumb" href="/post/<%= data.items[v].key %>">
+                <img src="<%= data.items[v].thumb %>" />
+                <% if(data.items[v].videos){ %>
+                <% if((data.items[v].videos !== "")&&(data.items[v].videos !== "[]")){ %>
                 <img class="play-icon" src="/images/play.png" />
                 <% } %>
                 <% } %>
@@ -86,3 +86,16 @@
 <% } %>
 </div>
 <% } %>
+
+<div class="pagination">
+    <p>
+        <% if(data.count - data.fpostLimit === 1){ %>
+            1 more post
+        <% }else if(data.count - data.fpostLimit <= 0){ %>
+            no more post
+        <% }else{ %>
+            <%= data.count - data.fpostLimit %> more posts
+        <% } %>
+    </p>
+    <img class="load" onclick="paginate()" src="/images/loadmore.png" />
+</div>

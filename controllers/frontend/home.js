@@ -19,10 +19,11 @@ class Home{
 
     async paginate(req, res){
         const setup = await req.mysetup()
-        const { posts, length } = await postdb.paginate(req, setup.fpostLimit)
+        const { posts, length } = await postdb.paginate(req, setup.homePaginate)
         setup.count = length
         setup.items = posts
-        setup.page = parseInt(req.body.page) + 1
+        setup.page = parseInt(req.body.page)
+        
         res.json(setup)
     }
 }

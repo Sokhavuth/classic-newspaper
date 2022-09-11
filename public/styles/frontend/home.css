@@ -8,12 +8,18 @@
     background-color: var(--foreground);
 }
 
-.feature-post .post:nth-child(2){
+.feature-post .post:nth-child(2),
+.feature-post .large-thumb{
     grid-column: 2 / span 2;
 }
 
-.feature-post .post:nth-child(2) .thumb .play-icon{
+.feature-post .post:nth-child(2) .thumb .play-icon,
+.feature-post .large-thumb .thumb .play-icon{
     width: 15%;
+}
+
+.feature-post .paginate{
+    margin-top: 20px;
 }
 
 .feature-post .post .thumb{
@@ -76,6 +82,21 @@
     calc(25% - 5.25px) calc(25% - 5.25px) ;
     grid-gap: 7px;
     padding: 0 7px 7px;
+}
+
+.pagination{
+    text-align: center;
+    padding-top: 10px;
+    font: 18px/1.5 StardosStencil, Limonf3;
+}
+
+.pagination p{
+    padding-bottom: 10px;
+}
+
+.pagination img:hover{
+    cursor: pointer;
+    opacity: .7;
 }
 
 @media screen and (max-width: 600px){
