@@ -3,55 +3,86 @@
 <link rel="stylesheet" href="/styles/frontend/home.css" />
 <script src="/scripts/paginate.js"></script>
 
+<% if(data.items){ %>
 <div class="feature-post">
-    <% if(data.items){ %>
-        <%
-        if(data.items.length < 5){
-            var condition = data.items.length
-        }else{
-            var condition = 5
-        }
-        %>
-        <% for(let index=0; index<condition; index++){ %>
-            <a href="/post/<%= data.items[index].key %>">
-                <img src="<%= data.items[index].thumb %>" />
-                <% if((data.items[index].videos !== "")&&(data.items[index].videos !== "[]")){ %>
+        <div class="post">
+            <a class="thumb" href="/post/<%= data.items[1].key %>">
+                <img src="<%= data.items[1].thumb %>" />
+                <% if(data.items[1].videos){ %>
+                <% if((data.items[1].videos !== "")&&(data.items[1].videos !== "[]")){ %>
                 <img class="play-icon" src="/images/play.png" />
                 <% } %>
-                <p class="title"><%= data.items[index].title %></p>
+                <% } %>
+                
             </a>
-        <%  } %>
-    <% } %>
+            <a href="/post/<%= data.items[1].key %>">
+                <p class="title"><%= data.items[1].title %></p>
+            </a>
+            <div class="content"><%- data.items[1].content %></div>
+        </div>
+
+        <div class="post">
+            <a class="thumb" href="/post/<%= data.items[0].key %>">
+                <img src="<%= data.items[0].thumb %>" />
+                <% if(data.items[0].videos){ %>
+                <% if((data.items[0].videos !== "")&&(data.items[0].videos !== "[]")){ %>
+                <img class="play-icon" src="/images/play.png" />
+                <% } %>
+                <% } %>
+                
+            </a>
+            <a href="/post/<%= data.items[0].key %>">
+                <p class="title"><%= data.items[0].title %></p>
+            </a>
+            <div class="content"><%- data.items[0].content %></div>
+        </div>
+
+        <div class="post">
+            <a class="thumb" href="/post/<%= data.items[2].key %>">
+                <img src="<%= data.items[2].thumb %>" />
+                <% if(data.items[2].videos){ %>
+                <% if((data.items[2].videos !== "")&&(data.items[2].videos !== "[]")){ %>
+                <img class="play-icon" src="/images/play.png" />
+                <% } %>
+                <% } %>
+                
+            </a>
+            <a href="/post/<%= data.items[2].key %>">
+                <p class="title"><%= data.items[2].title %></p>
+            </a>
+            <div class="content"><%- data.items[2].content %></div>
+        </div>
 </div>
+<% } %>
 
 <div class="front-ad">
-    <img src="/images/front-ad.png" />
-    <img src="/images/front-ad.png" />
     <img src="/images/donate-ad.jpg" />
     <img src="/images/donate-ad.jpg" />
-    <img src="/images/khmerweb-ad.png" />
-    <img src="/images/khmerweb-ad.png" />
 </div>
 
-<div class="post-title">
-    <% if(data.items.length > 5){ %>
-        <% for(let index=5; index<data.items.length; index++){ %>
-            <a class="title" href="/post/<%= data.items[index].key %>">
-                <%= data.items[index].title %>
+<% if(data.items){ %>
+<div class="feature-post">
+<% for(let v=3; v<data.fpostLimit; v++){ %>
+    <div class="post">
+        <% if(v === 4){ %>
+            <a class="thumb" href="/post/<%= data.items[2].key %>">
+                <img src="<%= data.items[2].thumb %>" />
+                <% if(data.items[2].videos){ %>
+                <% if((data.items[2].videos !== "")&&(data.items[2].videos !== "[]")){ %>
+                <img class="play-icon" src="/images/play.png" />
+                <% } %>
+                <% } %>
             </a>
-        <% } %>
-    <% } %>
-</div>
-
-<div class="pagination">
-    <p>
-        <% if(data.count - data.page*data.fpostLimit === 1){ %>
-            1 more post
-        <% }else if(data.count - data.page*data.fpostLimit <= 0){ %>
-            no more post
+            <a href="/post/<%= data.items[v].key %>">
+                <p class="title"><%= data.items[v].title %></p>
+            </a>
         <% }else{ %>
-            <%= data.count - data.page*data.fpostLimit %> more posts
+        <a href="/post/<%= data.items[v].key %>">
+            <p class="title"><%= data.items[v].title %></p>
+        </a>
+        <div class="content"><%- data.items[v].content %></div>
         <% } %>
-    </p>
-    <img class="load" onclick="paginate()" src="/images/loadmore.png" />
+    </div>
+<% } %>
 </div>
+<% } %>
