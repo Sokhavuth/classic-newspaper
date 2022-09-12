@@ -5,10 +5,15 @@
 <section class="Index region">
     <header class="header">
         <div class="inner">
+            <div class="date"><%= data.date %></div>
             <div class="title">
                 <a href="/"><%= data.siteTitle %></a>
                 <p class="description"><%= data.description %></p>
             </div>
+            <form action="/search" method="post">
+                <input type="text" name="q" required placeholder="Type your word here..." />
+                <input type="submit" value="Search" />
+            </form>
         </div>
     </header>
 
@@ -61,8 +66,17 @@
     <div class="main region">
         <% if(data.route === "/"){ %>
             <%- include("./home") %>
-        <% } %>
-            
+        <% }else if(data.route === "/post"){ %>
+            <%- include("./post") %>
+        <% }else if(data.route.includes("/page")){ %>
+            <%- include("./page") %>
+        <% }else if(data.route === "/category"){ %>
+            <%- include("./category") -%>
+        <% }else if(data.route === "/search"){ %>
+            <%- include("./search") %>
+        <% }else if(data.route === "/user"){ %>
+            <%- include("./user") %>
+        <% } %>   
     </div>
 
     <footer class="footer region">

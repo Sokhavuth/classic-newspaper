@@ -1,16 +1,15 @@
 /* public/styles/frontend/post.css */
 
 .Post .main{
-    padding-top: 20px;
+    padding: 20px;
     display: grid;
     grid-template-columns: 70% auto;
-    grid-gap: 15px;
+    grid-gap: 20px;
 }
 
-.Post .main .content,
-.Post .main .sidebar{
-    background-color: var(--background-light);
-    padding: 20px;
+.Post .main .content{
+    border-right: 1px solid var(--background-light);
+    padding-right: 20px;
 }
 
 .Post .main .content .title{
@@ -33,7 +32,6 @@
 .Post .main .content .video .screen div{
     position: relative;
     padding-top: 56.25%;
-    border: 1px solid white;
     border-bottom: none;
 }
 
@@ -59,8 +57,7 @@
     height: auto;
     font-size: 16px;
     background: lightgrey;
-    border: 1px solid white;
-    border-top: none;
+    border-top: 1px solid white;
 }
 
 .Post .main .content .video .playlist .part:last-child{
@@ -72,8 +69,17 @@
     opacity: .7;
 }
 
+.Post .main .content .text-content{
+    font: 14px/1.5 Courgette, HandWriting
+}
+
 @media screen and (max-width: 600px){
     .Post .main{
         grid-template-columns: 100%;
+    }
+
+    .Post .main .content{
+        border-right: none;
+        padding-right: 0;
     }
 }
